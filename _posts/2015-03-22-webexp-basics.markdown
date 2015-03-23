@@ -5,7 +5,7 @@ date:   2015-03-22 13:20:23
 categories: jekyll update
 ---
 
-Click [here](http://danlassiter.github.io/basic.html) for an extremely simple experiment. After running through it and seeing what it does, let's break it down.
+Click [here](http://danlassiter.github.io/websites/basic.html) for an extremely simple experiment. After running through it and seeing what it does, let's break it down.
 
 Here is the HTML:
 
@@ -14,6 +14,7 @@ Here is the HTML:
 <head>
 <title>Basic experiment</title>
 <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="mmturkey.0.5.js"></script> 
 <script type="text/javascript" src="basic.js"></script>
 <link rel="stylesheet" href="basic.css"></link>
 </head>
@@ -52,7 +53,7 @@ Detailed instructions for participants here.
 </div>
 
 <div class='slide' id='finish'>
-Thanks! You're all done ...
+You're finished - thanks for participating! Submitting to Mechanical Turk...
 </div>
 </body>
 </html>
@@ -61,12 +62,15 @@ Thanks! You're all done ...
 Here is some JavaScript code, which we'd package as the "basic.js" file referenced above. We use some basic JQuery for dynamic content. Note the use of '#' to get ids (which must be unique), vs. '.' to get classes (which usually aren't).
 
 {% highlight javascript linenos %}
-var stimuli = shuffle(['Bill doesn\'t have any money', 'Bill has any money', 'Colorless green ideas sleep furiously', 'Furiously sleep green ideas colorless']);
-var data = []; 
+var stimuli = shuffle(['Bill doesn\'t have any money', 
+                        'Bill has any money', 
+                        'Colorless green ideas sleep furiously', 
+                        'Furiously sleep green ideas colorless']);
+var data = {}; 
 var trialnum = 0;
 
 $(document).ready(function() {
-    showSlide('intro');
+    showSlide("intro");
     $('#gotoInstructions').click(function() {
         showSlide('instructions');
     });
@@ -83,6 +87,7 @@ function showSlide (slideName) {
 function stepExperiment () {
     if (stimuli.length == 0) { // end the experiment
         showSlide('finish');
+        setTimeout(function() { turk.submit(data)}, 1000);
     } else { 
         trialnum += 1;
         var trialdata = {
@@ -100,7 +105,7 @@ function stepExperiment () {
                 $("#continue").unbind('click'); 
                 $(".response").prop('checked', false);
                 trialdata.response = response;
-                data.push(trialdata);
+                data['trial' + trialnum] = trialdata;
                 stepExperiment();
             }
         });

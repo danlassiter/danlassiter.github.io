@@ -1,9 +1,12 @@
-var stimuli = shuffle(['Bill doesn\'t have any money', 'Bill has any money', 'Colorless green ideas sleep furiously', 'Furiously sleep green ideas colorless']);
-var data = []; 
+var stimuli = shuffle(['Bill doesn\'t have any money', 
+                        'Bill has any money', 
+                        'Colorless green ideas sleep furiously', 
+                        'Furiously sleep green ideas colorless']);
+var data = {}; 
 var trialnum = 0;
 
 $(document).ready(function() {
-    showSlide('intro');
+    showSlide("intro");
     $('#gotoInstructions').click(function() {
         showSlide('instructions');
     });
@@ -20,6 +23,7 @@ function showSlide (slideName) {
 function stepExperiment () {
     if (stimuli.length == 0) { // end the experiment
         showSlide('finish');
+        setTimeout(function() { turk.submit(data)}, 1000);
     } else { 
         trialnum += 1;
         var trialdata = {
@@ -37,7 +41,7 @@ function stepExperiment () {
                 $("#continue").unbind('click'); 
                 $(".response").prop('checked', false);
                 trialdata.response = response;
-                data.push(trialdata);
+                data['trial' + trialnum] = trialdata;
                 stepExperiment();
             }
         });
