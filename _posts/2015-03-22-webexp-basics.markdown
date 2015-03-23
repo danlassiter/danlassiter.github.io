@@ -18,76 +18,130 @@ Here is the HTML:
 <link rel="stylesheet" href="basic.css"></link>
 </head>
 <body>
-<div class='slide' id='instructions'>
+
+<div class='slide' id='intro'>
 Intro slide, with short description of experiment and perhaps also legal information. (The latter may be better placed on a separate slide.)
-<button type="button" class='proceed' id='instructions'>Proceed to instructions</button>
+<br><br>
+<button type='button' id='gotoInstructions'>Proceed to instructions</button>
 </div>
 
 <div class='slide' id='instructions'>
 Detailed instructions for participants here.
-<button type="button" class='proceed' id='startbutton'>Start experiment</button>
+<br><br>
+<button type='button' id='startbutton'>Start experiment</button>
 </div>
 
 <div class='slide' id='stage'>
 <p>Your stimulus will display here:</p>
-<span id="currentStim">{{{IF YOU SEE THIS SOMETHING IS WRONG!}}}</span>
+<span id='currentStim'>{{{IF YOU SEE THIS SOMETHING IS WRONG!}}}</span>
 <br>
 <p>Some response options:</p>
-<div class='response' id='ratings'>
-<td>
-<input type='radio' id='false' value='false' /></td>
-<th><label for='v2'>False</label></th></td>
-<td><input type='radio' id='true' value='true'/>True</td>
-<th><label for='v1'>Yes</label></th></div>
-</div>
-<button type="button" class='proceed' id='nextbutton'>Next</button>
+<form id='responseForm'>
+<table>
+<tr>
+<td><input type='radio' class='response' name='response' id='unacceptable' value='unacceptable' /></td>
+<td><input type='radio' class='response' name='response' id='acceptable' value='acceptable' /></td>
+</tr>
+<tr>
+<td><label for='v1'>Unacceptable&nbsp;&nbsp;</label></td>
+<td><label for='v2'>&nbsp;&nbsp;Acceptable</label></td>
+</tr>
+</table>
+</form>
+<button type='button' id='continue'>Continue</button>
 </div>
 
 <div class='slide' id='finish'>
 Thanks! You're all done ...
 </div>
 </body>
+</html>
 {% endhighlight %}
 
-Here is some JavaScript code, which we'd package as the "template.js" file referenced above. We use some basic JQuery for dynamic content. Note the use of '#' to get ids (which must be unique), vs. '.' to get classes (which usually aren't).
+Here is some JavaScript code, which we'd package as the "basic.js" file referenced above. We use some basic JQuery for dynamic content. Note the use of '#' to get ids (which must be unique), vs. '.' to get classes (which usually aren't).
 
 {% highlight javascript linenos %}
-var stimuli = ['1 + 1 = 3', '2 + 2 = 4', '8 * 7 = 52'];
+var stimuli = shuffle(['Bill doesn\'t have any money', 'Bill has any money', 'Colorless green ideas sleep furiously', 'Furiously sleep green ideas colorless']);
 var data = []; 
-var counter = 0;
-$('#instructions').show();
+var trialnum = 0;
 
-$('.proceed').click(function() {
-    next();
+$(document).ready(function() {
+    showSlide('intro');
+    $('#gotoInstructions').click(function() {
+        showSlide('instructions');
+    });
+    $('#startbutton').click(function() {
+        stepExperiment();
+    });
+});
+
+function showSlide (slideName) {
+    $('.slide').hide();
+    $('#' + slideName).show();
 }
 
+function stepExperiment () {
     if (stimuli.length == 0) { // end the experiment
-        $('.slide').hide();
-        $('#finish').show();
+        showSlide('finish');
     } else { 
-        counter += 1;
+        trialnum += 1;
         var trialdata = {
-            trialnum: counter;
+            trialnum: trialnum
         };
-        var stim = myStimuli.shift(); 
+        var stim = stimuli.shift(); 
             // remove 1st element of shuffled stimuli array
         trialdata.stimulus = stim;
-        $('#stimtext').html(stim);
-            // write it as the 'currentStim' text
-        $('.slide').hide();
-        $('#stage').show(); // reveal the result to participant
-        $('#nextbutton').click(){
-            if ()
-            data.push(trialdata);
-        }
+        $('#currentStim').html(stim);
+            // write it into 'currentStim' HTML placeholder
+        showSlide('stage'); // reveal the result to participant
+        $('#continue').click(function() {
+            response = $('#responseForm').serialize();
+            if (response.length > 0) {// check for valid answer
+                $("#continue").unbind('click'); 
+                $(".response").prop('checked', false);
+                trialdata.response = response;
+                data.push(trialdata);
+                stepExperiment();
+            }
+        });
     }
-});
+}
+
+function shuffle(v) { // non-destructive.
+    newarray = v.slice(0);
+    for (var j, x, i = newarray.length; i; j = parseInt(Math.random() * i), x = newarray[--i], newarray[i] = newarray[j], newarray[j] = x);
+    return newarray;
+}
 {% endhighlight %}
 At the end of the experiment, we'd have to do something with the data we've collected to send it to MTurk. More on this later.
 
-Here is some CSS, which we'd package as the "style.css" file referenced above:
+Here is some CSS, which we'd package as the "basic.css" file referenced above:
 
 {% highlight css linenos %}
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Palatino Linotype, Bookman Antiqua, Palatino, serif;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    width: 95%;
+    height: 95%;
+}
+
+table, td {margin: 0 auto; text-align: center}
+
+button {
+    font-family: Georgia, serif; 
+    font-size: 14px;
+    border: 1px solid #999;
+    margin: 0 auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 29px;
+    min-width: 70px;
+}
+
 .slide {
     width: 95%;
     height: 95%;
@@ -96,9 +150,6 @@ Here is some CSS, which we'd package as the "style.css" file referenced above:
     margin: 0;
     margin-left: 0.5%;
     padding: 1% 2% 1% 2%;
-}
-.stim { <!-- overrides more general slide styles -->
-    text-align: center;
 }
 {% endhighlight %}
 

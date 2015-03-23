@@ -1,30 +1,51 @@
-var stimuli = ['1 + 1 = 3', '2 + 2 = 4', '8 * 7 = 52'];
+var stimuli = shuffle(['Bill doesn\'t have any money', 'Bill has any money', 'Colorless green ideas sleep furiously', 'Furiously sleep green ideas colorless']);
 var data = []; 
-var counter = 0;
-$('#instructions').show();
+var trialnum = 0;
 
-$('.proceed').click(function() {
-    next();
+$(document).ready(function() {
+    showSlide('intro');
+    $('#gotoInstructions').click(function() {
+        showSlide('instructions');
+    });
+    $('#startbutton').click(function() {
+        stepExperiment();
+    });
+});
+
+function showSlide (slideName) {
+    $('.slide').hide();
+    $('#' + slideName).show();
 }
 
+function stepExperiment () {
     if (stimuli.length == 0) { // end the experiment
-        $('.slide').hide();
-        $('#finish').show();
+        showSlide('finish');
     } else { 
-        counter += 1;
+        trialnum += 1;
         var trialdata = {
-            trialnum: counter;
+            trialnum: trialnum
         };
-        var stim = myStimuli.shift(); 
+        var stim = stimuli.shift(); 
             // remove 1st element of shuffled stimuli array
         trialdata.stimulus = stim;
-        $('#stimtext').html(stim);
-            // write it as the 'currentStim' text
-        $('.slide').hide();
-        $('#stage').show(); // reveal the result to participant
-        $('#nextbutton').click(){
-            if ()
-            data.push(trialdata);
-        }
+        $('#currentStim').html(stim);
+            // write it into 'currentStim' HTML placeholder
+        showSlide('stage'); // reveal the result to participant
+        $('#continue').click(function() {
+            response = $('#responseForm').serialize();
+            if (response.length > 0) {// check for valid answer
+                $("#continue").unbind('click'); 
+                $(".response").prop('checked', false);
+                trialdata.response = response;
+                data.push(trialdata);
+                stepExperiment();
+            }
+        });
     }
-});
+}
+
+function shuffle(v) { // non-destructive.
+    newarray = v.slice(0);
+    for (var j, x, i = newarray.length; i; j = parseInt(Math.random() * i), x = newarray[--i], newarray[i] = newarray[j], newarray[j] = x);
+    return newarray;
+}

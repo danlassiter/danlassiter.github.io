@@ -1,3 +1,27 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Palatino Linotype, Bookman Antiqua, Palatino, serif;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    width: 95%;
+    height: 95%;
+}
+
+table, td {margin: 0 auto; text-align: center}
+
+button {
+    font-family: Georgia, serif; 
+    font-size: 14px;
+    border: 1px solid #999;
+    margin: 0 auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 29px;
+    min-width: 70px;
+}
+
 .slide {
     width: 95%;
     height: 95%;
@@ -6,7 +30,4 @@
     margin: 0;
     margin-left: 0.5%;
     padding: 1% 2% 1% 2%;
-}
-.stim { <!-- overrides more general slide styles -->
-    text-align: center;
 }
