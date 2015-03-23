@@ -1,8 +1,12 @@
-var stimuli = ['stim1', 'stim2', 'stim3'];
+var stimuli = ['1 + 1 = 3', '2 + 2 = 4', '8 * 7 = 52'];
 var data = []; 
 var counter = 0;
 $('#instructions').show();
-$('#startbutton').click(function() {
+
+$('.proceed').click(function() {
+    next();
+}
+
     if (stimuli.length == 0) { // end the experiment
         $('.slide').hide();
         $('#finish').show();

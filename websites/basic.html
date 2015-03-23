@@ -2,19 +2,24 @@
 <head>
 <title>Basic experiment</title>
 <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="basic.js"/>
-<link rel="stylesheet" href="basic.css"/>
+<script type="text/javascript" src="basic.js"></script>
+<link rel="stylesheet" href="basic.css"></link>
 </head>
 <body>
 <div class='slide' id='instructions'>
-Instructions for participants here.
-<button type="button" id='startbutton'>Start</button>
+Intro slide, with short description of experiment and perhaps also legal information. (The latter may be better placed on a separate slide.)
+<button type="button" class='proceed' id='instructions'>Proceed to instructions</button>
+</div>
+
+<div class='slide' id='instructions'>
+Detailed instructions for participants here.
+<button type="button" class='proceed' id='startbutton'>Start experiment</button>
 </div>
 
 <div class='slide' id='stage'>
 <p>Your stimulus will display here:</p>
-<span id="currentStim">{{{}}}</span>
-
+<span id="currentStim">{{{IF YOU SEE THIS SOMETHING IS WRONG!}}}</span>
+<br>
 <p>Some response options:</p>
 <div class='response' id='ratings'>
 <td>
@@ -22,8 +27,8 @@ Instructions for participants here.
 <th><label for='v2'>False</label></th></td>
 <td><input type='radio' id='true' value='true'/>True</td>
 <th><label for='v1'>Yes</label></th></div>
-
-<button type="button" id='nextbutton'>Next</button>
+</div>
+<button type="button" class='proceed' id='nextbutton'>Next</button>
 </div>
 
 <div class='slide' id='finish'>

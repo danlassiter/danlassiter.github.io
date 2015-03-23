@@ -14,19 +14,24 @@ Here is the HTML:
 <head>
 <title>Basic experiment</title>
 <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="basic.js"/>
-<link rel="stylesheet" href="basic.css"/>
+<script type="text/javascript" src="basic.js"></script>
+<link rel="stylesheet" href="basic.css"></link>
 </head>
 <body>
 <div class='slide' id='instructions'>
-Instructions for participants here.
-<button type="button" id='startbutton'>Start</button>
+Intro slide, with short description of experiment and perhaps also legal information. (The latter may be better placed on a separate slide.)
+<button type="button" class='proceed' id='instructions'>Proceed to instructions</button>
+</div>
+
+<div class='slide' id='instructions'>
+Detailed instructions for participants here.
+<button type="button" class='proceed' id='startbutton'>Start experiment</button>
 </div>
 
 <div class='slide' id='stage'>
 <p>Your stimulus will display here:</p>
-<span id="currentStim">{{{}}}</span>
-
+<span id="currentStim">{{{IF YOU SEE THIS SOMETHING IS WRONG!}}}</span>
+<br>
 <p>Some response options:</p>
 <div class='response' id='ratings'>
 <td>
@@ -34,8 +39,8 @@ Instructions for participants here.
 <th><label for='v2'>False</label></th></td>
 <td><input type='radio' id='true' value='true'/>True</td>
 <th><label for='v1'>Yes</label></th></div>
-
-<button type="button" id='nextbutton'>Next</button>
+</div>
+<button type="button" class='proceed' id='nextbutton'>Next</button>
 </div>
 
 <div class='slide' id='finish'>
@@ -47,11 +52,15 @@ Thanks! You're all done ...
 Here is some JavaScript code, which we'd package as the "template.js" file referenced above. We use some basic JQuery for dynamic content. Note the use of '#' to get ids (which must be unique), vs. '.' to get classes (which usually aren't).
 
 {% highlight javascript linenos %}
-var stimuli = ['stim1', 'stim2', 'stim3'];
+var stimuli = ['1 + 1 = 3', '2 + 2 = 4', '8 * 7 = 52'];
 var data = []; 
 var counter = 0;
 $('#instructions').show();
-$('#startbutton').click(function() {
+
+$('.proceed').click(function() {
+    next();
+}
+
     if (stimuli.length == 0) { // end the experiment
         $('.slide').hide();
         $('#finish').show();
