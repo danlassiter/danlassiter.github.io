@@ -6,7 +6,7 @@ read FILENAME
 echo Enter name of experiment files to create
 read OUTPUT
 
-python createWebsite.py -$FILENAME -$OUTPUT
+python createWebsite.py $FILENAME $OUTPUT
 
 echo Updating .git repository ...
 git add -A
