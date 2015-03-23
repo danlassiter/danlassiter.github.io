@@ -4,14 +4,18 @@ title:  "WebExp basics"
 date:   2015-03-22 13:20:23
 categories: jekyll update
 ---
-Here is a basic HTML document:
+
+Click [here](http://danlassiter.github.io/basic.html) for an extremely simple experiment. After running through it and seeing what it does, let's break it down.
+
+Here is the HTML:
 
 {% highlight HTML linenos %}
 <html>
 <head>
 <title/>
-<script type="text/javascript" src="template.js"></script>
-<link rel="stylesheet" href="style.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="basic.js"/>
+<link rel="stylesheet" href="basic.css"/>
 </head>
 <body>
 <div class='slide' id='instructions'>
