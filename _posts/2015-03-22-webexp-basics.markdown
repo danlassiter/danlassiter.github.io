@@ -163,3 +163,5 @@ Further materials:
 * [Long Ouyang's Even-Odd Tutorial](http://longouyang.github.io/even-odd/docs/even-odd.html), from which some of the concepts and code here are borrowed.
 
 * Codeacademy's [HTML/CSS](http://www.codecademy.com/en/tracks/web), [Javascript](http://www.codecademy.com/tracks/javascript), and [JQuery](http://www.codecademy.com/en/tracks/jquery) mini-courses 
+
+* [A bunch of different experiments](http://web.stanford.edu/~danlass/experiment/) written in the style described here, with variations (progress bars, sliders, graphics, ...). You may take ideas/code from any of these if you find them useful.
