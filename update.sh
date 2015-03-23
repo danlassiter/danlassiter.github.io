@@ -1,10 +1,16 @@
 #!/bin/bash 
 
-echo Enter name of file to parse
+echo Enter name of markdown file to parse
 read FILENAME
 
-python createWebsite.py -$FILENAME
+echo Enter name of experiment files to create
+read OUTPUT
 
+python createWebsite.py -$FILENAME -$OUTPUT
+
+echo Updating .git repository ...
 git add -A
 git commit -m 'update'
 git push
+
+echo Alldone

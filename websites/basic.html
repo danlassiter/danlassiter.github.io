@@ -1,0 +1,32 @@
+<html>
+<head>
+<title/>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="basic.js"/>
+<link rel="stylesheet" href="basic.css"/>
+</head>
+<body>
+<div class='slide' id='instructions'>
+Instructions for participants here.
+<button type="button" id='startbutton'>Start</button>
+</div>
+
+<div class='slide' id='stage'>
+<p>Your stimulus will display here:</p>
+<span id="currentStim">{{{}}}</span>
+
+<p>Some response options:</p>
+<div class='response' id='ratings'>
+<td>
+<input type='radio' id='false' value='false' /></td>
+<th><label for='v2'>False</label></th></td>
+<td><input type='radio' id='true' value='true'/>True</td>
+<th><label for='v1'>Yes</label></th></div>
+
+<button type="button" id='nextbutton'>Next</button>
+</div>
+
+<div class='slide' id='finish'>
+Thanks! You're all done ...
+</div>
+</body>

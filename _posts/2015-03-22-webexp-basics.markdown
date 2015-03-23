@@ -13,7 +13,7 @@ Here is the HTML:
 <html>
 <head>
 <title/>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="basic.js"/>
 <link rel="stylesheet" href="basic.css"/>
 </head>
@@ -88,7 +88,7 @@ Here is some CSS, which we'd package as the "style.css" file referenced above:
     margin-left: 0.5%;
     padding: 1% 2% 1% 2%;
 }
-stim { <!-- overrides more general slide styles -->
+.stim { <!-- overrides more general slide styles -->
     text-align: center;
 }
 {% endhighlight %}
