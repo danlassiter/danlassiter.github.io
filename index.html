@@ -4,20 +4,18 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+This website hosts materials for a tutorial on web experiments, written for the workshop-style course "Reasoning with Quantifiers" (Linguistics 236/Psychology 236C), taught at Stanford University in Winter 2015 by <a href="http://web.stanford.edu/~cgpotts/">Chris Potts</a> and <a href="http://web.stanford.edu/~danlass/">Dan Lassiter</a>. 
+
+<br><br>
 
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
       </li>
     {% endfor %}
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>

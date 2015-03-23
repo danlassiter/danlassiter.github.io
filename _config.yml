@@ -1,6 +1,6 @@
 # Site settings
 title: Reasoning with Quantifiers
-email: ""
+email: "danlassiter@stanford.edu"
 description: "Primer on web experiments for Chris Potts &amp; Dan Lassiter's seminar 'Reasoning with Quantifiers' (Linguistics 236), Stanford, Winter 2015"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://danlassiter.github.io/" # the base hostname & protocol for your site
