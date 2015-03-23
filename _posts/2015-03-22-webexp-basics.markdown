@@ -12,7 +12,7 @@ Here is the HTML:
 {% highlight HTML linenos %}
 <html>
 <head>
-<title/>
+<title>Basic experiment</title>
 <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="basic.js"/>
 <link rel="stylesheet" href="basic.css"/>
