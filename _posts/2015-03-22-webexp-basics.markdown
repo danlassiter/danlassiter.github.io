@@ -158,5 +158,8 @@ button {
 }
 {% endhighlight %}
 
+Further materials:
 
+* [Long Ouyang's Even-Odd Tutorial](http://longouyang.github.io/even-odd/docs/even-odd.html), from which some of the concepts and code here are borrowed.
 
+* Codeacademy's [HTML/CSS](http://www.codecademy.com/en/tracks/web), [Javascript](http://www.codecademy.com/tracks/javascript), and [JQuery](http://www.codecademy.com/en/tracks/jquery) mini-courses 
