@@ -165,3 +165,9 @@ Further materials:
 * Codeacademy's [HTML/CSS](http://www.codecademy.com/en/tracks/web), [Javascript](http://www.codecademy.com/tracks/javascript), and [JQuery](http://www.codecademy.com/en/tracks/jquery) mini-courses 
 
 * [A bunch of different experiments](http://web.stanford.edu/~danlass/experiment/) written in the style described here, with variations (progress bars, sliders, graphics, ...). You may take ideas/code from any of these if you find them useful.
+
+* [Eloquent JavaScript](http://eloquentjavascript.net/), a free online book which introduces programming through JavaScript
+
+* A wonderful little book by Douglas Crockford on good (and bad) aspects of JavaScript, useful for those with some (but not necessarily lots of) programming chops: [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do)
+
+* [JSLint](http://www.jslint.com/), Crockford's (fairly demanding) style-checking tool for JavaScript. (Note: my code does not always conform to Crockford's recommendations, since I wrote a lot of it before encountering his book; but it would be better if it did.)
