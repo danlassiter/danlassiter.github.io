@@ -168,6 +168,6 @@ Further materials:
 
 * [Eloquent JavaScript](http://eloquentjavascript.net/), a free online book which introduces programming through JavaScript
 
-* A wonderful little book by Douglas Crockford on good (and bad) aspects of JavaScript, useful for those with some (but not necessarily lots of) programming chops: [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do)
+* [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do), a wonderful little book by Douglas Crockford on good and bad aspects of JavaScript, useful for those with some (but not necessarily lots of) programming chops
 
 * [JSLint](http://www.jslint.com/), Crockford's (fairly demanding) style-checking tool for JavaScript. (Note: my code does not always conform to Crockford's recommendations, since I wrote a lot of it before encountering his book; but it would be better if it did.)

@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<title>Title of page</title>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="skeleton.js"></script>
+<link rel="stylesheet" href="skeleton.css"></link>
+</head>
+
+<body>
+Here is some static text. Below is a button. When you click it, the text inside the 'span' tags will change! This is because, in the JavaScript, we will link to the 'changeMeTxt' identifier and tell it to change the static HTML object enclosed in that identifier.
+
+<br><br>
+
+<span id='changeMeTxt'>You should only see this text when the page is initially loaded. If it remains after clicking the 'Change text' button, something is wrong.</span>
+
+<br><br>
+
+<button type='button' id='change'>Change text</button>
+
+<br><br>
+
+You can also modify multiple items that have the same class.
+
+<table>
+    <tr>
+        <td><span class='changeMultipleTxt'>{{}}</span></td>
+        <td><span class='changeMultipleTxt'>{{}}</span></td>
+        <td><span class='changeMultipleTxt'>{{}}</span></td>
+    </tr>
+    <tr>
+        <td><span class='changeMultipleTxt'>{{}}</span></td>
+        <td><span class='changeMultipleTxt'>{{}}</span></td>
+        <td><span class='changeMultipleTxt'>{{}}</span></td>
+    </tr>
+</table>
+
+<br><br>
+
+<button type='button' id='changeMultiple'>Change multiple</button>
+</body>
+</html>
