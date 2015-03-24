@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "WebExp basics"
+title:  "WebExp basics: A simple working example"
 date:   2015-03-22 13:20:23
 categories: jekyll update
 ---
@@ -93,20 +93,28 @@ function stepExperiment () {
         var trialdata = {
             trialnum: trialnum
         };
-        var stim = stimuli.shift(); 
+            // create object to hold data from current trial
+        trialdata.stimulus = stimuli.shift(); 
             // remove 1st element of shuffled stimuli array
-        trialdata.stimulus = stim;
+            // and assign it as current stimulus
         $('#currentStim').html(stim);
-            // write it into 'currentStim' HTML placeholder
-        showSlide('stage'); // reveal the result to participant
+            // then, write it into 'currentStim' HTML placeholder
+        showSlide('stage'); 
+            // reveal the result to participant
         $('#continue').click(function() {
             response = $('#responseForm').serialize();
-            if (response.length > 0) {// check for valid answer
-                $("#continue").unbind('click'); 
+            if (response.length > 0) { 
+                    // check for valid answer
+                $("#continue").unbind('click');
+                    // make continue button available for re-use 
                 $(".response").prop('checked', false);
+                    // ensure response options unticked next time
                 trialdata.response = response;
+                    // record response
                 data['trial' + trialnum] = trialdata;
+                    // write trial data into global data object
                 stepExperiment();
+                    // go to next trial
             }
         });
     }
@@ -170,4 +178,4 @@ Further materials:
 
 * [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do), a wonderful little book by Douglas Crockford on good and bad aspects of JavaScript, useful for those with some (but not necessarily lots of) programming chops
 
-* [JSLint](http://www.jslint.com/), Crockford's (fairly demanding) style-checking tool for JavaScript. (Note: my code does not always conform to Crockford's recommendations, since I wrote a lot of it before encountering his book; but it would be better if it did.)
+* [JSLint](http://www.jslint.com/), Crockford's (fairly demanding) style-checking tool for JavaScript. (Note: my code does not always conform to Crockford's recommendations, since I wrote a lot of it before encountering his book and probably have still not fully absorbed it; but it would be better if it did.)

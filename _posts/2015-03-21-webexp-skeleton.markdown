@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "WebExp basics"
+title:  "WebExp basics: Skeleton"
 date:   2015-03-22 13:20:23
 categories: jekyll update
 ---
@@ -26,11 +26,16 @@ The HTML file is what is actually opened; it will contain links to the CSS and J
 </head>
 
 <body>
-Here is some static text. Below is a button. When you click it, the text inside the 'span' tags will change! This is because, in the JavaScript, we will link to the 'changeMeTxt' identifier and tell it to change the static HTML object enclosed in that identifier.
+Here is some static text. Below is a button. 
+When you click it, the text inside the 'span' tags will change! 
+This is because, in the JavaScript, we will link to the 'changeMeTxt' 
+identifier and tell it to change the static HTML object enclosed in that identifier.
 
 <br><br>
 
-<span id='changeMeTxt'>You should only see this text when the page is initially loaded. If it remains after clicking the 'Change text' button, something is wrong.</span>
+<span id='changeMeTxt'>You should only see this text when the page is 
+initially loaded. If it remains after clicking the 'Change text' button, 
+something is wrong.</span>
 
 <br><br>
 
@@ -39,6 +44,8 @@ Here is some static text. Below is a button. When you click it, the text inside 
 <br><br>
 
 You can also modify multiple items that have the same class.
+
+<br><br>
 
 <table>
     <tr>
@@ -53,29 +60,38 @@ You can also modify multiple items that have the same class.
     </tr>
 </table>
 
-<br><br>
+<br>
 
 <button type='button' id='changeMultiple'>Change multiple</button>
 </body>
 </html>
 {% endhighlight %}
 
-Here is some JavaScript code, which we'd package as the "skeleton.js" file referenced above. In the calls to JQuery, which use '$', note the use of '#' to get ids (which must be unique), vs. '.' to get classes (which usually aren't).
+Here is some JavaScript code, which we'd package as the "skeleton.js"
+file referenced above. In the calls to JQuery, which use '$', note the 
+use of '#' to get ids (which must be unique), vs. '.' to get classes 
+(which usually aren't).
 
 {% highlight javascript linenos %}
 $(document).ready(function() { /// load as soon as script is invoked
-    showSlide("intro");
     $('#change').click(function() {
-        // when you click the button with id 'change', do this:
-        $('#changeMeTxt').html('Your random number is: ' + Math.random());
+            // when you click the button with id 'change', do this:
+        var randomNumber = Math.random();
+            // pick a random floating-point number in [0,1]
+        $('#changeMeTxt').html('Your random number is: ' + randomNumber);
+            // replace HTML inside the span with id 'changeMeTxt'
     });
-    $('.changeMultiple').click(function() {
-        // when you click the button with id 'change', do this:
-        $('#changeMeTxt').html(Math.random());
+    $('#changeMultiple').click(function() {
+            // when you click the button with id 'change', do this:
+        var randomInt = Math.floor(100 * Math.random());
+            // pick a random integer between 0 and 99
+        $('.changeMultipleTxt').html('Random int: ' + randomInt);
+            // for anything with class 'changeMultipleTxt', replace HTML
     });
 });
 {% endhighlight %}
-At the end of the experiment, we'd have to do something with the data we've collected to send it to MTurk. More on this later.
+At the end of the experiment, we'd have to do something with the data 
+we've collected to send it to MTurk. More on this later.
 
 Here is some CSS, which we'd package as the "basic.css" file referenced above:
 

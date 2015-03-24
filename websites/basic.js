@@ -29,20 +29,28 @@ function stepExperiment () {
         var trialdata = {
             trialnum: trialnum
         };
-        var stim = stimuli.shift(); 
+            // create object to hold data from current trial
+        trialdata.stimulus = stimuli.shift(); 
             // remove 1st element of shuffled stimuli array
-        trialdata.stimulus = stim;
+            // and assign it as current stimulus
         $('#currentStim').html(stim);
-            // write it into 'currentStim' HTML placeholder
-        showSlide('stage'); // reveal the result to participant
+            // then, write it into 'currentStim' HTML placeholder
+        showSlide('stage'); 
+            // reveal the result to participant
         $('#continue').click(function() {
             response = $('#responseForm').serialize();
-            if (response.length > 0) {// check for valid answer
-                $("#continue").unbind('click'); 
+            if (response.length > 0) { 
+                    // check for valid answer
+                $("#continue").unbind('click');
+                    // make continue button available for re-use 
                 $(".response").prop('checked', false);
+                    // ensure response options unticked next time
                 trialdata.response = response;
+                    // record response
                 data['trial' + trialnum] = trialdata;
+                    // write trial data into global data object
                 stepExperiment();
+                    // go to next trial
             }
         });
     }
