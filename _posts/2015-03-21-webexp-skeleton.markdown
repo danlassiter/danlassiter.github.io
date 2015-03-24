@@ -13,7 +13,9 @@ In our workflow, an experiment will generally consist of three parts:
 
 * a JavaScript file (.js), which specifies the dynamic parts of the experiment.
 
-The HTML file is what is actually opened; it will contain links to the CSS and JavaScript files. Here is a bare-bones example. We start by invoking JQuery, which helps the dynamic (JavaScript) part know what to do when modifying the HTML.  
+The HTML file is what is actually opened; it will contain links to the CSS and JavaScript files. Here is a bare-bones example. We start by invoking JQuery, which helps the dynamic (JavaScript) part know what to do when modifying the HTML.
+
+The final product is the website linked [here](http://danlassiter.github.io/websites/skeleton.html).  
 
 {% highlight HTML linenos %}
 <html>
