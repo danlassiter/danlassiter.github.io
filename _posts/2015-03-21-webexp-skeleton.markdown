@@ -84,7 +84,7 @@ $(document).ready(function() { /// load as soon as script is invoked
             // replace HTML inside the span with id 'changeMeTxt'
     });
     $('#changeMultiple').click(function() {
-            // when you click the button with id 'change', do this:
+            // when you click the button with id 'changeMultiple', do this:
         var randomInt = Math.floor(100 * Math.random());
             // pick a random integer between 0 and 99
         $('.changeMultipleTxt').html('Random int: ' + randomInt);
@@ -92,8 +92,6 @@ $(document).ready(function() { /// load as soon as script is invoked
     });
 });
 {% endhighlight %}
-At the end of the experiment, we'd have to do something with the data 
-we've collected to send it to MTurk. More on this later.
 
 Here is some CSS, which we'd package as the "basic.css" file referenced above:
 
