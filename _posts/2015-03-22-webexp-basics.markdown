@@ -96,8 +96,8 @@ function stepExperiment () {
             // create object to hold data from current trial
         trialdata.stimulus = stimuli.shift(); 
             // remove 1st element of shuffled stimuli array
-            // and assign it as current stimulus
-        $('#currentStim').html(stim);
+            // and record it as current stimulus
+        $('#currentStim').html(trialdata.stimulus);
             // then, write it into 'currentStim' HTML placeholder
         showSlide('stage'); 
             // reveal the result to participant
